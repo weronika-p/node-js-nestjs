@@ -26,7 +26,7 @@ import { ConfigModule } from '@nestjs/config';
     port: 5432,
     username: 'node_complete_user',
     password: '7PbKZVhC3frUjTT6QxhNWmoS0Hqj68l7',
-    database: 'node-complete',
+    database: 'node_complete',
     entities: [ProductsEntity, UserEntity, CartEntity, CartItemsEntity, OrderEntity, OrderItemEntity],
     synchronize: true,
     logging: true
