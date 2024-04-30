@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item">
+                    <a href="/" {{#if indexPath}}class="active"{{/if}}>Shop</a>
+                </li>
+                <li class="main-header__item">
+                    <a {{#if productsPath}}class="active"{{/if}} href="/products">Products</a>
+                </li>
+                <li class="main-header__item">
+                    <a {{#if cartPath}}class="active"{{/if}} href="/cart">Cart</a>
+                </li>
+                <li class="main-header__item">
+                    <a {{#if orderPath}}class="active"{{/if}} href="/orders">Orders</a>
+                </li>
+                <li class="main-header__item">
+                    <a href="/admin/add-product" {{#if addProductPath}}class="active"{{/if}}>Add Product</a>
+                </li>
+                 <li class="main-header__item">
+                    <a {{#if adminProductsPath}}class="active"{{/if}} href="/admin/products">Admin Products
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Page Not Found!</h1>
+</body>
+
+</html>

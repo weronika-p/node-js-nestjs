@@ -1,0 +1,12 @@
+<main>
+    {{#if error}}
+        <div class="user-message user-message--error">{{error}}</div>
+    {{/if}}
+    <form class="login-form" action="/reset" method="POST">
+        <div class="form-control">
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <button class="btn" type="submit">Reset Password</button>
+    </form>
+</main>

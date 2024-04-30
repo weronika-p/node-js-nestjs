@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/main.css">
+    {{#if formsCSS}}
+        <link rel="stylesheet" href="/css/forms.css">
+    {{/if}}
+    {{#if productCSS}}
+        <link rel="stylesheet" href="/css/product.css">
+    {{/if}}
+    {{#if cartCSS}}
+        <link rel="stylesheet" href="/css/cart.css">
+    {{/if}}
+    {{#if ordersCSS}}
+        <link rel="stylesheet" href="/css/orders.css">
+    {{/if}}
+    {{#if authCSS}}
+        <link rel="stylesheet" href="/css/auth.css">
+    {{/if}}
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item">
+                    <a href="/" {{#if indexPath}}class="active"{{/if}}>Shop</a>
+                </li>
+                <li class="main-header__item">
+                    <a {{#if productsPath}}class="active"{{/if}} href="/products">Products</a>
+                </li>
+                {{#if isAuthenticated}}
+                    <li class="main-header__item">
+                        <a {{#if cartPath}}class="active"{{/if}} href="/cart">Cart</a>
+                    </li>
+                    <li class="main-header__item">
+                        <a {{#if orderPath}}class="active"{{/if}} href="/orders">Orders</a>
+                    </li>
+                    <li class="main-header__item">
+                        <a href="/admin/add-product" {{#if addProductPath}}class="active"{{/if}}>Add Product</a>
+                    </li>
+                    <li class="main-header__item">
+                        <a {{#if adminProductsPath}}class="active"{{/if}} href="/admin/products">Admin Products
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+            <ul class="main-header__item-list">
+                {{#unless isAuthenticated}}
+                    <li class="main-header__item">
+                        <a {{#if loginPath}}class="active"{{/if}} href="/login">Login</a>
+                    </li>
+                    <li class="main-header__item">
+                        <a {{#if signupPath}}class="active"{{/if}} href="/signup">Signup</a>
+                    </li>
+                {{/unless}}
+                {{#if isAuthenticated}}
+                    <li class="main-header__item">
+                        <form action="/logout" method="post">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a {{#if indexPath}}class="active"{{/if}} href="/">Shop</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a {{#if productsPath}}class="active"{{/if}} href="/products">Products</a>
+            </li>
+            {{#if isAuthenticated}}
+                <li class="mobile-nav__item">
+                    <a {{#if cartPath}}class="active"{{/if}} href="/cart">Cart</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a {{#if orderPath}}class="active"{{/if}} href="/orders">Orders</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a {{#if addProductPath}}class="active"{{/if}} href="/admin/add-product">Add Product
+                    </a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a {{#if adminProductsPath}}class="active"{{/if}} href="/admin/products">Admin Products
+                    </a>
+                </li>
+            {{/if}}
+            {{#unless isAuthenticated}}
+                <li class="mobile-nav__item">
+                    <a {{#if loginPath}}class="active"{{/if}} href="/login">Login</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a {{#if signupPath}}class="active"{{/if}} href="/signup">Signup</a>
+                </li>
+            {{/unless}}
+            {{#if isAuthenticated}}
+                <li class="mobile-nav__item">
+                    <form action="/logout" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            {{/if}}
+        </ul>
+    </nav>
+    {{{body}}}
+</body>
+
+</html>

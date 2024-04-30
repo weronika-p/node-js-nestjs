@@ -1,0 +1,25 @@
+<main>
+    {{#if products.length}}
+        <ul class="cart__item-list">
+            {{#each products}}
+                <li class="cart__item">
+                    <h1>{{this.productData.title}}</h1>
+                    <h2>Quantity: {{this.qty}}</h2>
+                    <form action="/cart/delete-item" method="POST">
+                        <input type="hidden" value="{{this.productData.id}}" name="productId">
+                        <button class="btn danger" type="submit">Delete</button>
+                    </form>
+                </li>
+            {{/each}}
+        </ul>
+        <hr>
+        <div class="centered">
+            {{!-- <form action="/cart/create-order" method="POST">
+                <button type="submit" class="btn">Order Now!</button>
+            </form> --}}
+            <a href='/checkout' class='btn'>Order Now!</a>
+        </div>
+    {{else}}
+        <h1>No Products in Cart!</h1>
+    {{/if}}
+</main>

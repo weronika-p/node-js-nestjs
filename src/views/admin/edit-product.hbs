@@ -1,0 +1,39 @@
+<main>
+    {{#each error}}
+        <div class="user-message user-message--error">
+            {{this}}
+        </div>
+    {{/each}}
+    <form class="product-form" action="/admin/{{#if editing}}edit-product{{else}}add-product{{/if}}" method="POST" enctype='multipart/form-data'>
+        <div class="form-control">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" value='{{#if isEditingOrHasError}}{{product.title}}{{/if}}'>
+        </div>
+        {{!-- <div class="form-control">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" name="imageUrl" id="imageUrl" value='{{#if isEditingOrHasError}}{{product.imageUrl}}{{/if}}'>
+        </div> --}}
+        <div class="form-control">
+            <label for="imageUrl">Image</label>
+            <input type="file" name="image" id="image">
+        </div>
+        <div class="form-control">
+            <label for="price">Price</label>
+            <input type="number" name="price" id="price" step="0.01" value='{{#if isEditingOrHasError}}{{product.price}}{{/if}}'>
+        </div>
+        <div class="form-control">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" rows="5">{{#if isEditingOrHasError}}{{product.description}}{{/if}}</textarea>
+        </div>
+        {{#if editing}}
+            <input type='hidden' value='{{product.id}}' name='productId'>
+        {{/if}}
+        <button class="btn" type="submit">
+            {{#if editing}}
+                Update Product
+            {{else}}
+                Add Product
+            {{/if}}
+        </button>
+    </form>
+</main>
