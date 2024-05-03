@@ -22,11 +22,11 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [AdminModule, ShopModule, AuthModule, TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'dpg-cooecg2cn0vc738nf3p0-a',
+    host: process.env.POSTGRES_HOST,
     port: 5432,
-    username: 'node_complete_user',
-    password: '7PbKZVhC3frUjTT6QxhNWmoS0Hqj68l7',
-    database: 'node_complete',
+    username: process.env.POSTGRES_USERNAME,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB_NAME,
     entities: [ProductsEntity, UserEntity, CartEntity, CartItemsEntity, OrderEntity, OrderItemEntity],
     synchronize: true,
     logging: true

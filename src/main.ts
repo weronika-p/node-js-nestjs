@@ -40,7 +40,7 @@ async function bootstrap() {
   app.setViewEngine('hbs');
   app.use(session({
     store: new (require('connect-pg-simple')(session))({
-      conString: `postgres://${process.env.POSTGRES_USERNAME}:${process.env.POSTGRES_PASSWORD}}@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DB_NAME}` 
+      conString: `postgres://${process.env.POSTGRES_USERNAME}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DB_NAME}`
     }),
     secret: process.env.POSTGRES_SECRET,
     resave: false,
