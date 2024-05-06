@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { join } from 'path';
 import { CartItemsEntity } from 'src/entities/cart-items.entity';
 import { CartEntity } from 'src/entities/cart.entity';
 import { ProductsEntity } from 'src/entities/products.entity';
@@ -7,12 +6,9 @@ import { UserEntity } from 'src/entities/user.entity';
 import { CartItemsRepository } from 'src/repositories/cart-items.repository';
 import { CartRepository } from 'src/repositories/cart.repository';
 import { ProductsRepository } from 'src/repositories/products.repository';
-import rootDir from 'src/util/path';
 
 @Injectable()
 export class CartService {
-    p: string = join(rootDir, 'src/data', 'cart.json');
-    
     constructor(
         private cartRepository: CartRepository,
         private cartItemsRepository: CartItemsRepository,

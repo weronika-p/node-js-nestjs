@@ -48,7 +48,7 @@ export class OrdersService {
                 throw new UnauthorizedException('Unauthorized');
             }
             const invoiceName = `invoice-${orderId}.pdf`;
-            const invoicePath = join(rootDir, 'src/data/invoices', invoiceName);
+            const invoicePath = join(rootDir, 'data/invoices', invoiceName);
             const pdfDoc = new PDFDocument();
             pdfDoc.pipe(createWriteStream(invoicePath));
             pdfDoc.fontSize(26).text('Invoice', {

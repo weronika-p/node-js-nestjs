@@ -1,16 +1,13 @@
 import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
-import { join } from 'path/posix';
 import { ProductsEntity } from 'src/entities/products.entity';
 import { UserEntity } from 'src/entities/user.entity';
 import { Product } from 'src/models/product.model';
 import { ProductsRepository } from 'src/repositories/products.repository';
 import { deleteFile } from 'src/util/file';
-import rootDir from 'src/util/path';
 
 @Injectable()
 export class AdminService {
   products: Product[] = []
-  p: string = join(rootDir, 'src/data', 'products.json')
   ITEMS_PER_PAGE: number = 1
 
   constructor(private productsRepository: ProductsRepository) {}

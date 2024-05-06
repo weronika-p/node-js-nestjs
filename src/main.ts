@@ -8,7 +8,7 @@ import * as session from 'express-session'
 import { auth } from './middleware/authentication.middleware'
 import { ValidationPipe } from '@nestjs/common'
 import { ValidationException } from './exceptions/validation.exception'
-// import * as favicon from 'serve-favicon'
+import * as favicon from 'serve-favicon'
 import helmet from 'helmet'
 import * as compression from 'compression'
 import * as morgan from 'morgan'
@@ -23,17 +23,17 @@ async function bootstrap() {
   app.use(compression())
   app.use(morgan('combined', { stream: accessLogStream }))
   app.useStaticAssets(join(rootDir, 'public'))
-  app.useStaticAssets(join(rootDir, 'src/images'), { prefix: '/src/images' })
+  app.useStaticAssets(join(rootDir, 'images'), { prefix: '/images' })
   app.setBaseViewsDir([
-    join(rootDir, 'src/views'),
-    join(rootDir, 'src/views/admin'),
-    join(rootDir, 'src/views/shop'),
-    join(rootDir, 'src/views/auth'),
+    join(rootDir, 'views'),
+    join(rootDir, 'views/admin'),
+    join(rootDir, 'views/shop'),
+    join(rootDir, 'views/auth'),
   ])
   const hbs = create({
     extname: '.hbs',
-    layoutsDir: join(rootDir, 'src/views/layouts'),
-    partialsDir: join(rootDir, 'src/views/partials'),
+    layoutsDir: join(rootDir, 'views/layouts'),
+    partialsDir: join(rootDir, 'views/partials'),
   })
   app.engine('hbs', hbs.engine)
   app.setViewEngine('hbs')
@@ -61,7 +61,7 @@ async function bootstrap() {
       exceptionFactory: errors => new ValidationException(errors),
     }),
   )
-  // app.use(favicon(join(rootDir, 'public', 'favicon.ico')))
+  app.use(favicon(join(rootDir, 'public', 'favicon.ico')))
   await app.listen(process.env.PORT || 3000)
 }
 bootstrap()
