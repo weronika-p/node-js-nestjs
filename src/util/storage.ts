@@ -4,12 +4,12 @@ import { join } from 'path';
 import rootDir from './path';
 
 // Ensure the 'images' directory exists, create it if it doesn't
-const imageUploadDirectory = 'src/images';
+const imageUploadDirectory = 'images';
 if (!existsSync(imageUploadDirectory)) {
   mkdirSync(imageUploadDirectory);
 }
 
-const path = join(rootDir, 'src/images');
+const path = join(rootDir, 'images');
 
 export const storage = diskStorage({
     destination: (req, file, callback) => {
