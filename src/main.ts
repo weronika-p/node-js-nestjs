@@ -8,7 +8,7 @@ import * as session from 'express-session'
 import { auth } from './middleware/authentication.middleware'
 import { ValidationPipe } from '@nestjs/common'
 import { ValidationException } from './exceptions/validation.exception'
-import * as favicon from 'serve-favicon'
+// import * as favicon from 'serve-favicon'
 import helmet from 'helmet'
 import * as compression from 'compression'
 import * as morgan from 'morgan'
@@ -61,7 +61,7 @@ async function bootstrap() {
       exceptionFactory: errors => new ValidationException(errors),
     }),
   )
-  app.use(favicon(join(rootDir, 'public', 'favicon.ico')))
+  // app.use(favicon(join(rootDir, 'public', 'favicon.ico')))
   await app.listen(process.env.PORT || 3000)
 }
 bootstrap()
