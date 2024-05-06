@@ -26,7 +26,7 @@ import { ConfigModule } from '@nestjs/config'
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: `postgres://${process.env.POSTGRES_USERNAME}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DB_NAME}`,
+      url: `postgres://${[process.env.POSTGRES_USERNAME]}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}/node_complete`,
       entities: [
         ProductsEntity,
         UserEntity,
@@ -35,7 +35,7 @@ import { ConfigModule } from '@nestjs/config'
         OrderEntity,
         OrderItemEntity,
       ],
-      // synchronize: true,
+      synchronize: false,
       logging: true,
       ssl: {
         rejectUnauthorized: false, // Ensure that the server's certificate is validated
